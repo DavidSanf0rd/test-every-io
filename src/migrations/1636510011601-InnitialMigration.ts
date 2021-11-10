@@ -12,5 +12,4 @@ export class InnitialMigration1636510011601 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE "user"`);
         await queryRunner.query(`DROP TABLE "task"`);
     }
-
 }
