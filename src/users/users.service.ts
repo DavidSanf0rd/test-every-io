@@ -19,4 +19,8 @@ export class UsersService {
     return this.userRepository.save(newUser);
   }
 
+  async comparePassword(password: string, hashedPassword: string) {
+      return bcrypt.compare(password, hashedPassword)
+  }
+
 }

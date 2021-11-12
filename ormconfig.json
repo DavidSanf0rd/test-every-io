@@ -5,7 +5,7 @@
     "username": "postgresql",
     "password": "123456",
     "database": "every-io-test",
-    "entities": ["src/**/*.entity{.ts,.js}"],
+    "entities": ["dist/**/*.entity{.ts,.js}"],
     "migrations": ["dist/migrations/**/*{.ts,.js}"],
     "synchronize": false
 }
