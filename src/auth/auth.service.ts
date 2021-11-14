@@ -8,7 +8,7 @@ export class AuthService {
   constructor(private usersService: UsersService,
               private jwtService: JwtService) {}
 
-  async validateUser(username: string, pass: string): Promise<Partial<User>> {
+  async validateUser(username: string, pass: string): Promise<Partial<User> | undefined> {
     const user = await this.usersService.findOne(username);
 
     if (!user) {
@@ -16,9 +16,10 @@ export class AuthService {
         return null;
     }
 
-    const passwordMatched = await !this.usersService.comparePassword(pass, user.password);
+    const passwordMatched = await this.usersService.comparePassword(pass, user.password)
+
     if (!passwordMatched) {
-        Logger.debug(`Password not matched`)
+        Logger.debug(`Password didn't matched`)
         return null;
     }
 
@@ -26,8 +27,8 @@ export class AuthService {
     return result;
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  async login(user: User) {
+    const payload = { username: user.name, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };

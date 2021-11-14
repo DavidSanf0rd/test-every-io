@@ -1,4 +1,5 @@
 import { PartialType } from "@nestjs/mapped-types"
+import { TaskStatus } from "../entities/task-status.entity"
 import { Task } from "../entities/task.entity"
 
 export class CreateTaskDto {
@@ -7,11 +8,5 @@ export class CreateTaskDto {
 
     description: string
 
-    current_status: string
-
-    toDomain(): Task {
-        
-
-        return task;
-    }
+    statusId: number
 }
