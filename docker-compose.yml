@@ -13,7 +13,7 @@ services:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
-    command: sh -c "yarn install && yarn start"
+    command: sh -c "yarn install && yarn migration:run && yarn seed && yarn start"
     env_file:
       - .env
     networks:

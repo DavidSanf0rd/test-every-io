@@ -13,7 +13,7 @@ async function bootstrap() {
         seeder
           .seed()
           .then(() => {
-            logger.debug('Seeding complete!');
+            logger.log('Seeding complete!');
           })
           .catch(error => {
             logger.error('Seeding failed!');

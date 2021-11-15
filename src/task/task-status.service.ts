@@ -22,6 +22,10 @@ export class TaskStatusService {
       findById(id: number): Promise<TaskStatus> {
           return this.taskStatusRepository.findOne( { id: id })
       }
+
+      findAll(): Promise<TaskStatus[]>{
+        return this.taskStatusRepository.find();
+      }
 }
 
 

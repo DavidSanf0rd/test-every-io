@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskStatus } from './entities/task-status.entity';
-import { Task } from './entities/task.entity';
+import { Task } from './task.entity';
 import { TaskStatusService } from './task-status.service';
 
 @Injectable({ scope: Scope.REQUEST })
@@ -25,7 +25,7 @@ export class TaskService {
     task.status = defaultTaskStatus;
     task.user = this.request.user;
 
-
+    Logger.debug(`saving task: ${task}`)
     return await this.taskRepository.save(task)
   }
 
